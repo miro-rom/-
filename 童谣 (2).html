@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石榴同心 · 民族团结童谣创作</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f8f0e3, #e8f4fc);
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #c41e3a;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .input-area {
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        #keywordInput {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #d8e4f0;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        #keywordInput:focus {
+            border-color: #2b7bba;
+        }
+        .hot-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 20px;
+        }
+        .hot-key {
+            padding: 6px 16px;
+            background: #e8f4fc;
+            color: #2b7bba;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .hot-key:hover {
+            background: #2b7bba;
+            color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #2b7bba;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #1f649c;
+        }
+        .result-box {
+            margin-top: 28px;
+            padding: 24px;
+            background-color: #f9fbff;
+            border-radius: 12px;
+            border-left: 5px solid #2b7bba;
+            min-height: 120px;
+            white-space: pre-line;
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .tip {
+            margin-top: 12px;
+            color: #777;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>石榴同心 · 民族团结童谣创作</h1>
+        <p class="subtitle">各族儿女手拉手，相亲相爱一家人</p>
+
+        <div class="input-area">
+            <label>点击或输入创作关键词</label>
+            <input type="text" id="keywordInput" placeholder="推荐：石榴籽、团结、包容、欣赏、同心">
+            <div class="hot-keywords">
+                <span class="hot-key" onclick="fillKey('石榴籽')">石榴籽</span>
+                <span class="hot-key" onclick="fillKey('团结')">团结</span>
+                <span class="hot-key" onclick="fillKey('包容')">包容</span>
+                <span class="hot-key" onclick="fillKey('欣赏')">欣赏</span>
+                <span class="hot-key" onclick="fillKey('同心')">同心</span>
+            </div>
+        </div>
+        <button onclick="createNurseryRhyme()">生成民族团结童谣</button>
+
+        <div class="result-box" id="result">
+            生成的民族团结童谣会展示在这里
+        </div>
+        <p class="tip">核心主题：手足相亲、尊重包容、同心向党、家国同心</p>
+    </div>
+
+<script>
+// 快捷填充关键词
+function fillKey(key){
+    document.getElementById('keywordInput').value = key;
+}
+
+function createNurseryRhyme(){
+    const keyword = document.getElementById('keywordInput').value.trim();
+    const resultDom = document.getElementById('result');
+    if(!keyword){
+        resultDom.innerText = "请选择或输入关键词再生成哦！";
+        return;
+    }
+    // 民族团结主题童谣库
+    const rhymeList = [
+        `小小石榴籽，紧紧抱一起。
+各族一家亲，同心爱中华。`,
+
+        `${keyword}聚人心，各族心连心。
+彼此多尊重，家国万事兴。`,
+
+        `手拉手相伴，同心共向前。
+包容存善意，民族团结甜。`,
+
+        `五族同心聚，和睦相依。
+互赏共成长，山河皆温情。`,
+
+        `${keyword}凝暖意，岁岁皆相依。
+同心护家国，各族永同心。`,
+
+        `山川同风月，各族一家人。
+包容存大爱，同心向星辰。`
+    ];
+    // 随机选取童谣
+    const randomIndex = Math.floor(Math.random() * rhymeList.length);
+    resultDom.innerText = rhymeList[randomIndex];
+}
+</script>
+</body>
+</html>
